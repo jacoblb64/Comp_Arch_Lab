@@ -3,7 +3,7 @@ use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
-entity matrix_multipier is
+entity matrix_multiplier is
 	port(		p1, p2, p3,
 				k11, k12, k13,
 				k21, k22, k23,
@@ -11,15 +11,15 @@ entity matrix_multipier is
 
 				clk					: in std_logic;
 
-				c1, c2, c3			: out std_logic_vector(3 downto 0);
+				c1, c2, c3			: out std_logic_vector(3 downto 0)
 	);
 	
-end end matrix_multipier;
+end matrix_multiplier;
 
-architecture behv of matrix_multipier is
+architecture behv of matrix_multiplier is
 
 	signal p1r, p2r, p3r : std_logic_vector(3 downto 0);
-	signal c2r, c2r, c3r : std_logic_vector(3 downto 0); 
+	signal c1r, c2r, c3r : std_logic_vector(7 downto 0); 
 	
 begin
 
@@ -29,9 +29,9 @@ begin
 			p2r <= p2;
 			p3r <= p3;
 			
-			c1 <= c1r;
-			c2 <= c2r;
-			c3 <= c3r;
+			c1 <= c1r(3 downto 0);
+			c2 <= c2r(3 downto 0);
+			c3 <= c3r(3 downto 0);
 		end if;
 	end process;
 	
