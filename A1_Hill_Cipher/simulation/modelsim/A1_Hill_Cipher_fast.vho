@@ -16,7 +16,7 @@
 -- PROGRAM "Quartus II 64-Bit"
 -- VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version"
 
--- DATE "01/08/2016 16:20:44"
+-- DATE "01/11/2016 16:39:15"
 
 -- 
 -- Device: Altera EP2C5F256C6 Package FBGA256
@@ -322,23 +322,23 @@ SIGNAL \k21~combout\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \k12~combout\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \k11~combout\ : std_logic_vector(3 DOWNTO 0);
 SIGNAL \Mult4|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult0|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult4|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult3|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult1|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult7|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult8|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult2|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult8|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
 SIGNAL \Mult0|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult6|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult6|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult7|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult4|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult0|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult8|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult2|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult7|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult1|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
 SIGNAL \Mult3|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult8|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult1|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult5|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
 SIGNAL \Mult2|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
 SIGNAL \Mult5|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult7|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult1|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
-SIGNAL \Mult5|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult6|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult3|auto_generated|le4a\ : std_logic_vector(5 DOWNTO 0);
+SIGNAL \Mult6|auto_generated|le3a\ : std_logic_vector(5 DOWNTO 0);
 
 BEGIN
 

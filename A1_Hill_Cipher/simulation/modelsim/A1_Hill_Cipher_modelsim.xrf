@@ -1,6 +1,8 @@
 vendor_name = ModelSim
 source_file = 1, H:/workspace/Comp_Arch_Lab/A1_Hill_Cipher/matrix_multiplier.vhd
 source_file = 1, H:/workspace/Comp_Arch_Lab/A1_Hill_Cipher/matrix_sub_mult.vhd
+source_file = 1, H:/workspace/Comp_Arch_Lab/A1_Hill_Cipher/key_loader.vhd
+source_file = 1, H:/workspace/Comp_Arch_Lab/A1_Hill_Cipher/key_loader_struct.vhd
 source_file = 1, H:/workspace/Comp_Arch_Lab/A1_Hill_Cipher/db/A1_Hill_Cipher.cbx.xml
 source_file = 1, c:/altera/13.0sp1/quartus/libraries/vhdl/ieee/prmtvs_b.vhd
 source_file = 1, c:/altera/13.0sp1/quartus/libraries/vhdl/ieee/prmtvs_p.vhd
