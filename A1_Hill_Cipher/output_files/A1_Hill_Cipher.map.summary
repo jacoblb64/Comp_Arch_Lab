@@ -1,13 +1,13 @@
-Analysis & Synthesis Status : Successful - Mon Jan 11 16:38:45 2016
+Analysis & Synthesis Status : Successful - Tue Jan 12 11:32:55 2016
 Quartus II 64-Bit Version : 13.0.1 Build 232 06/12/2013 SP 1 SJ Full Version
 Revision Name : A1_Hill_Cipher
-Top-level Entity Name : matrix_multiplier
+Top-level Entity Name : matrix_sub_mult
 Family : Cyclone II
-Total logic elements : 160
-    Total combinational functions : 148
-    Dedicated logic registers : 24
-Total registers : 24
-Total pins : 61
+Total logic elements : 62
+    Total combinational functions : 50
+    Dedicated logic registers : 16
+Total registers : 16
+Total pins : 29
 Total virtual pins : 0
 Total memory bits : 0
 Embedded Multiplier 9-bit elements : 0

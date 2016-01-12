@@ -7,7 +7,7 @@ use ieee.numeric_std.all;
 library lpm;
 use lpm.lpm_components.all;
 
-entity key_loader_stuct is
+entity key_loader_struct is
 	port(		p1, p2, p3		: in 	std_logic_vector(3 downto 0);
 	
 				load_key, clk	: in 	std_logic;
@@ -17,9 +17,9 @@ entity key_loader_stuct is
 				k31, k32, k33	: out std_logic_vector(3 downto 0)
 	);
 	
-end key_loader_stuct;
+end key_loader_struct;
 
-architecture struct of key_loader_stuct is
+architecture struct of key_loader_struct is
 
 	signal	k11r, k12r, k13r,
 				k21r, k22r, k23r,
@@ -85,7 +85,7 @@ begin
 			data => k23r,
 			clock => clk,
 			enable => load_key,
-			q => k21r
+			q => k22r
 			);
 
 	lpm_ff_k32 : lpm_ff
@@ -97,7 +97,7 @@ begin
 			data => k32r,
 			clock => clk,
 			enable => load_key,
-			q => k31r
+			q => k32r
 			);
 
 

@@ -36,7 +36,6 @@ begin
 		PORT MAP (
 			dataa => p1r,
 			datab => k1x,
-			clock => clk,
 			result => mult1r
 			);
 
@@ -50,7 +49,6 @@ begin
 		PORT MAP (
 			dataa => p2r,
 			datab => k2x,
-			clock => clk,
 			result => mult2r
 			);
 
@@ -64,14 +62,13 @@ begin
 		PORT MAP (
 			dataa => p3r,
 			datab => k3x,
-			clock => clk,
 			result => mult3r
 			);
 			
 
 	lpm_add_1 : lpm_add_sub
 		GENERIC MAP (
-			lpm_width => 4,
+			lpm_width => 8,
 			lpm_direction => "ADD",
 			lpm_representation => "UNSIGNED",
 			lpm_type => "LPM_ADD_SUB"
@@ -79,13 +76,12 @@ begin
 		PORT MAP (
 			dataa => mult1r,
 			datab => mult2r,
-			clock => clk,
 			result => addr
 			);
 
 	lpm_add_2 : lpm_add_sub
 		GENERIC MAP (
-			lpm_width => 4,
+			lpm_width => 8,
 			lpm_direction => "ADD",
 			lpm_representation => "UNSIGNED",
 			lpm_type => "LPM_ADD_SUB"
@@ -93,7 +89,6 @@ begin
 		PORT MAP (
 			dataa => addr,
 			datab => mult3r,
-			clock => clk,
 			result => cxr
 			);
 			
@@ -105,7 +100,7 @@ begin
 			)
 		PORT MAP (
 			data => p1,
-			clock => clk,
+			clock  => clk,
 			q => p1r
 			);
 			
