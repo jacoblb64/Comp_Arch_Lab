@@ -94,7 +94,7 @@ begin
 			lpm_fftype => "DFF"
 			)
 		PORT MAP (
-			data => k32r,
+			data => k33r,
 			clock => clk,
 			enable => load_key,
 			q => k32r

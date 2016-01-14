@@ -36,7 +36,7 @@ begin
 	end process;
 	
 	c1r  <= (p1r * k11) + (p2r * k21) + (p3r * k31);
-	c2r  <= (p2r * k12) + (p2r * k22) + (p3r * k32);
-	c3r  <= (p3r * k23) + (p2r * k23) + (p3r * k33);
+	c2r  <= (p1r * k12) + (p2r * k22) + (p3r * k32);
+	c3r  <= (p1r * k13) + (p2r * k23) + (p3r * k33);
 
 end behv;
