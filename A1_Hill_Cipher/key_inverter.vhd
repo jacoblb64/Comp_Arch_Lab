@@ -30,9 +30,9 @@ architecture struct of key_inverter is
 
 				adj11, adj12, adj13,
 				adj21, adj22, adj23,
-				adj31, adj32, adj33
+				adj31, adj32, adj33,
 
-				det,						:			std_logic_vector(3 downto 0);
+				det						:			std_logic_vector(3 downto 0);
 
 				-- for computation
 	signal 	cof11r, cof12r, cof13r,
@@ -41,13 +41,13 @@ architecture struct of key_inverter is
 
 				adj11r, adj12r, adj13r,
 				adj21r, adj22r, adj23r,
-				adj31r, adj32r, adj33r
+				adj31r, adj32r, adj33r,
 
 				dk11r, dk12r, dk13r,
 				dk21r, dk22r, dk23r,
-				dk31r, dk32r, dk33r
+				dk31r, dk32r, dk33r,
 
-				detr,						:			std_logic_vector(7 downto 0);
+				detr						:			std_logic_vector(7 downto 0);
 
 	signal	det_inv, det_invr		:			std_logic_vector(3 downto 0);
 
@@ -68,20 +68,20 @@ begin
 
 -- second step: compute the adjoint matrix of the key
 
-	adj11r <= cof11;
-	adj12r <= cof21;
-	adj13r <= cof31;
-	adj21r <= cof12;
-	adj22r <= cof22;
-	adj23r <= cof32;
-	adj31r <= cof13;
-	adj32r <= cof23;
-	adj33r <= cof33;
+	adj11r <= x"0" & cof11;
+	adj12r <= x"0" & cof21;
+	adj13r <= x"0" & cof31;
+	adj21r <= x"0" & cof12;
+	adj22r <= x"0" & cof22;
+	adj23r <= x"0" & cof32;
+	adj31r <= x"0" & cof13;
+	adj32r <= x"0" & cof23;
+	adj33r <= x"0" & cof33;
 
 
 -- third step: compute the determinant of the key matrix
 
-	detr <= (k11 * cof11) + (k12 * cof12) + (k13 * cof13);
+	detr <= (ek11 * cof11) + (ek12 * cof12) + (ek13 * cof13);
 
 
 -- fourth step: compute the multiplicative inverse
@@ -93,7 +93,7 @@ begin
 				lpm_outdata				=> 	"UNREGISTERED",
 				lpm_address_control 	=> 	"REGISTERED",
 				lpm_file 				=> 	"mult_inv_16.mif",
-				lpm_widthad 			=> 	4
+				lpm_width 				=> 	4
 			)
 		PORT MAP (
 				inclock 					=> 	clk,

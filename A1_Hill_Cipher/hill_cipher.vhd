@@ -32,24 +32,33 @@ architecture arch of hill_cipher is
 
 	-- key inverter
 	component key_inverter is
+		port(		ek11, ek12, ek13,
+					ek21, ek22, ek23,
+					ek31, ek32, ek33		:	in		std_logic_vector(3 downto 0);
 
+					clk						:	in 	std_logic;
+
+					dk11, dk12, dk13,
+					dk21, dk22, dk23,
+					dk31, dk32, dk33		:	out	std_logic_vector(3 downto 0)
+		);
 	end component;
 
 	-- multiplexer for keys
 	component key_multiplexer is
-	   port (		ek11, ek12, ek13,
+	   port (	ek11, ek12, ek13,
 					ek21, ek22, ek23,
 					ek31, ek32, ek33,
 
 					dk11, dk12, dk13,
 					dk21, dk22, dk23,
-					dk31, dk32, dk33,		: in	std_logic_vector(3 downto 0);
+					dk31, dk32, dk33		: in	std_logic_vector(3 downto 0);
 
 					encrypt, clk			: in	std_logic;
 
 					ok11, ok12, ok13,
 					ok21, ok22, ok23,
-					ok31, ok32, ok33,		: out	std_logic_vector(3 downto 0)
+					ok31, ok32, ok33		: out	std_logic_vector(3 downto 0)
 	   );
 	end component;
 
@@ -78,7 +87,7 @@ architecture arch of hill_cipher is
 
 				sk11, sk12, sk13,
 				sk21, sk22, sk23,
-				sk31, sk32, sk33,	: std_logic_vector(3 downto 0);
+				sk31, sk32, sk33	: std_logic_vector(3 downto 0);
 
 begin
 
@@ -92,7 +101,7 @@ begin
 	end process;
 
 	-- load key
-	load_key : key_loader
+	key_load : key_loader
 		port map(
 			p1			=>		p1,
 			p2			=>		p2,
@@ -152,6 +161,8 @@ begin
 			ek33		=>		ek33,
 
 			clk		=>		clk,
+			
+			encrypt	=>		encrypt,
 
 			dk11		=>		dk11,
 			dk12		=>		dk12,
