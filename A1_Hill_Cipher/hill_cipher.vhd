@@ -67,6 +67,7 @@ architecture arch of hill_cipher is
 	end component;
 
 	signal 	encryptr				: std_logic;
+	
 	signal 	ek11, ek12, ek13,
 				ek21, ek22, ek23,
 				ek31, ek32, ek33,
