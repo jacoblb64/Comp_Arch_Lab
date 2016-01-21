@@ -63,7 +63,7 @@ architecture arch of hill_cipher is
 	end component;
 
 	-- matrix multiplier
-	component matrix_multiplier is
+	component matrix_mult is
 		port(		p1, p2, p3,
 					k11, k12, k13,
 					k21, k22, k23,
@@ -186,7 +186,7 @@ begin
 		);
 
 	-- multiply
-	m_mult : matrix_multiplier
+	m_mult : matrix_mult
 		port map(
 			p1			=>		p1,
 			p2			=>		p2,
