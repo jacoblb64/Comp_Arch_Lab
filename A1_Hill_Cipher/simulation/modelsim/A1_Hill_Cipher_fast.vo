@@ -16,7 +16,7 @@
 // PROGRAM "Quartus II 64-Bit"
 // VERSION "Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Full Version"
 
-// DATE "01/21/2016 11:17:09"
+// DATE "01/21/2016 17:43:36"
 
 // 
 // Device: Altera EP2C5F256C6 Package FBGA256
@@ -284,42 +284,42 @@ wire \col3|lpm_mult_3|auto_generated|op_3~5 ;
 wire \col3|lpm_mult_3|auto_generated|op_3~6_combout ;
 wire \lpm_ff_c3|dffs[2]~9 ;
 wire \lpm_ff_c3|dffs[3]~10_combout ;
+wire [5:0] \col1|lpm_mult_1|auto_generated|le3a ;
+wire [3:0] \k21~combout ;
+wire [3:0] \lpm_ff_p1|dffs ;
 wire [5:0] \col2|lpm_mult_1|auto_generated|le3a ;
+wire [3:0] \k23~combout ;
+wire [3:0] \lpm_ff_c3|dffs ;
+wire [5:0] \col1|lpm_mult_3|auto_generated|le3a ;
+wire [3:0] \k22~combout ;
+wire [3:0] \k33~combout ;
+wire [5:0] \col2|lpm_mult_2|auto_generated|le4a ;
+wire [3:0] \lpm_ff_c2|dffs ;
+wire [3:0] \k13~combout ;
+wire [5:0] \col2|lpm_mult_3|auto_generated|le4a ;
+wire [3:0] \lpm_ff_p3|dffs ;
+wire [3:0] \k11~combout ;
+wire [5:0] \col3|lpm_mult_1|auto_generated|le4a ;
+wire [5:0] \col3|lpm_mult_2|auto_generated|le3a ;
+wire [5:0] \col3|lpm_mult_2|auto_generated|le4a ;
+wire [5:0] \col2|lpm_mult_1|auto_generated|le4a ;
+wire [3:0] \p1~combout ;
+wire [5:0] \col3|lpm_mult_3|auto_generated|le3a ;
+wire [3:0] \k31~combout ;
+wire [3:0] \p3~combout ;
+wire [3:0] \k32~combout ;
+wire [5:0] \col2|lpm_mult_2|auto_generated|le3a ;
+wire [5:0] \col3|lpm_mult_3|auto_generated|le4a ;
+wire [3:0] \lpm_ff_c1|dffs ;
+wire [5:0] \col1|lpm_mult_1|auto_generated|le4a ;
+wire [5:0] \col3|lpm_mult_1|auto_generated|le3a ;
+wire [3:0] \k12~combout ;
+wire [5:0] \col2|lpm_mult_3|auto_generated|le3a ;
+wire [5:0] \col1|lpm_mult_2|auto_generated|le4a ;
 wire [3:0] \lpm_ff_p2|dffs ;
 wire [5:0] \col1|lpm_mult_2|auto_generated|le3a ;
-wire [5:0] \col3|lpm_mult_2|auto_generated|le4a ;
-wire [5:0] \col2|lpm_mult_3|auto_generated|le4a ;
-wire [5:0] \col1|lpm_mult_3|auto_generated|le4a ;
-wire [5:0] \col1|lpm_mult_3|auto_generated|le3a ;
-wire [5:0] \col2|lpm_mult_2|auto_generated|le3a ;
-wire [5:0] \col3|lpm_mult_1|auto_generated|le3a ;
-wire [5:0] \col2|lpm_mult_2|auto_generated|le4a ;
-wire [5:0] \col3|lpm_mult_2|auto_generated|le3a ;
-wire [5:0] \col1|lpm_mult_2|auto_generated|le4a ;
-wire [5:0] \col3|lpm_mult_3|auto_generated|le3a ;
-wire [5:0] \col3|lpm_mult_1|auto_generated|le4a ;
-wire [5:0] \col2|lpm_mult_1|auto_generated|le4a ;
-wire [5:0] \col3|lpm_mult_3|auto_generated|le4a ;
-wire [5:0] \col2|lpm_mult_3|auto_generated|le3a ;
-wire [3:0] \lpm_ff_p3|dffs ;
-wire [3:0] \lpm_ff_c1|dffs ;
-wire [3:0] \lpm_ff_c2|dffs ;
-wire [3:0] \lpm_ff_c3|dffs ;
-wire [5:0] \col1|lpm_mult_1|auto_generated|le4a ;
-wire [5:0] \col1|lpm_mult_1|auto_generated|le3a ;
-wire [3:0] \lpm_ff_p1|dffs ;
-wire [3:0] \p3~combout ;
 wire [3:0] \p2~combout ;
-wire [3:0] \p1~combout ;
-wire [3:0] \k33~combout ;
-wire [3:0] \k32~combout ;
-wire [3:0] \k31~combout ;
-wire [3:0] \k23~combout ;
-wire [3:0] \k22~combout ;
-wire [3:0] \k21~combout ;
-wire [3:0] \k13~combout ;
-wire [3:0] \k12~combout ;
-wire [3:0] \k11~combout ;
+wire [5:0] \col1|lpm_mult_3|auto_generated|le4a ;
 
 
 // Location: LCCOMB_X20_Y11_N8
