@@ -1,3 +1,14 @@
+-- Author			: Jacob Barnett
+-- Creation Date	: 14/1/2015
+-- Last Revision	: 24/1/2015
+
+-- Key Inverter
+-- This module takes a 3x3 matrix encryption key and computes the corresponding
+-- decryption key.
+
+-- As this operation is the slowest in the system, an attempt was made to
+-- pipeline the steps of operation.
+
 library ieee;
 use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
@@ -23,7 +34,7 @@ end key_inverter;
 
 architecture struct of key_inverter is
 
-				-- for pipelining, proper registered values
+				-- for pipelining, proper registered values of four-bit size
 	signal 	cof11, cof12, cof13,
 				cof21, cof22, cof23,
 				cof31, cof32, cof33,
@@ -34,7 +45,7 @@ architecture struct of key_inverter is
 
 				det						:			std_logic_vector(3 downto 0);
 
-				-- for computation
+				-- for computation, full 8 bit size
 	signal 	cof11r, cof12r, cof13r,
 				cof21r, cof22r, cof23r,
 				cof31r, cof32r, cof33r,
@@ -68,7 +79,7 @@ begin
 
 -- second step: compute the adjoint matrix of the key
 
-	adj11r <= x"0" & cof11;
+	adj11r <= x"0" & cof11; -- prepend 0's to match size of register
 	adj12r <= x"0" & cof21;
 	adj13r <= x"0" & cof31;
 	adj21r <= x"0" & cof12;

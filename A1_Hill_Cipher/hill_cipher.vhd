@@ -1,3 +1,11 @@
+-- Author			: Jacob Barnett
+-- Creation Date	: 18/1/2015
+-- Last Revision	: 24/1/2015
+
+-- Hill Cipher
+-- This is the overall architecture that brings all of the supporting modules
+-- together to perform the complete operation of encryption and decryption.
+
 library ieee;
 use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
@@ -75,23 +83,25 @@ architecture arch of hill_cipher is
 		);	
 	end component;
 
+	-- encryption register, to be latched
 	signal 	encryptr				: std_logic;
 	
-	signal 	ek11, ek12, ek13,
+	-- internal signals
+	signal 	ek11, ek12, ek13, -- encryption key
 				ek21, ek22, ek23,
 				ek31, ek32, ek33,
 
-				dk11, dk12, dk13,
+				dk11, dk12, dk13, -- decryption key
 				dk21, dk22, dk23,
 				dk31, dk32, dk33,
 
-				sk11, sk12, sk13,
+				sk11, sk12, sk13, -- selected key for operation
 				sk21, sk22, sk23,
 				sk31, sk32, sk33	: std_logic_vector(3 downto 0);
 
 begin
 
-	-- store the encrypt signal into a register
+	-- store the encrypt signal into a register (latching)
 	mux_reg : process(clk) begin
 		if(rising_edge(clk)) then
 
@@ -100,7 +110,7 @@ begin
 		end if;
 	end process;
 
-	-- load key
+	-- load the key
 	key_load : key_loader
 		port map(
 			p1			=>		p1,
@@ -121,7 +131,7 @@ begin
 			k33		=>		ek33
 		);
 
-	-- key inverter
+	-- invert the key
 	invert_key : key_inverter
 		port map(
 			ek11		=>		ek11,
@@ -147,7 +157,7 @@ begin
 			dk33		=>		dk33
 		);
 
-	-- multiplex
+	-- select the desired key for  the operation
 	key_mult : key_multiplexer
 		port map(
 			ek11		=>		ek11,
@@ -185,7 +195,8 @@ begin
 			ok33		=>		sk33
 		);
 
-	-- multiply
+	-- and finaly, multiply the input vector by the appropriate selected key, and
+	-- directly write to the output lines
 	m_mult : matrix_mult
 		port map(
 			p1			=>		p1,

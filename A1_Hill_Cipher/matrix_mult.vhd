@@ -1,5 +1,18 @@
+-- Author			: Jacob Barnett
+-- Creation Date	: 07/1/2015
+-- Last Revision	: 24/1/2015
+
+-- Matrix Multiplier (Behavioral Implementation)
+-- This module performs matrix multiplication with a 1x3 matrix and a 3x3 matrix
+
+-- The 1x3 matrix, or input vector is latched as it is an external input to the
+-- system. On the other hand, the 3x3 key matrix is assumed to be consistent as
+-- it is internal to the overall system.
+
+-- No modifications to the initial specification were made.
+
 library ieee;
-use ieee.std_logic_1164.all;
+use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
@@ -37,7 +50,7 @@ begin
 		end if;
 	end process;
 	
-	-- calculae outputs one operation at a time
+	-- calculate outputs one operation at a time
 	c1r  <= (p1r * k11) + (p2r * k21) + (p3r * k31);
 	c2r  <= (p1r * k12) + (p2r * k22) + (p3r * k32);
 	c3r  <= (p1r * k13) + (p2r * k23) + (p3r * k33);

@@ -1,3 +1,12 @@
+-- Author			: Jacob Barnett
+-- Creation Date	: 08/1/2015
+-- Last Revision	: 24/1/2015
+
+-- Matrix Multiplier (Structural Implementation)
+-- This is identical in functionality to the behavioral implementation of the
+-- matrix multiplier. Instead of a behavioral description, the operations are
+-- implemented using lpm components.
+
 library ieee;
 use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
@@ -22,6 +31,7 @@ end matrix_mult_struct;
 
 architecture struct of matrix_mult_struct is
 
+	-- sub component to perform one operation at a time
 	component matrix_sub_mult is
 		port(		p1, p2, p3,
 					k1x, k2x, k3x		: in 	std_logic_vector(3 downto 0);
@@ -30,11 +40,13 @@ architecture struct of matrix_mult_struct is
 		);
 	end component;
 	
+	-- p and c registers, to be latched
 	signal p1r, p2r, p3r 			: std_logic_vector(3 downto 0);
 	signal c1r, c2r, c3r 			: std_logic_vector(3 downto 0); 
 
 begin
 
+	--perform multiplication column by column
 	col1 : matrix_sub_mult
 		port map(
 			p1		=>		p1r,
@@ -74,7 +86,7 @@ begin
 			cx		=>		c3r
 		);
 		
-	
+	-- registers for latching the three p inputs
 	lpm_ff_p1 : lpm_ff
 		GENERIC MAP (
 			lpm_width => 4,
@@ -108,7 +120,7 @@ begin
 			q => p3r
 			);
 
-
+	-- registers for latching the three c inputs
 	lpm_ff_c1 : lpm_ff
 		GENERIC MAP (
 			lpm_width => 4,
