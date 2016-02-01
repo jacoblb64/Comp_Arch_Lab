@@ -38,7 +38,7 @@
 
 set_global_assignment -name FAMILY "Cyclone II"
 set_global_assignment -name DEVICE auto
-set_global_assignment -name TOP_LEVEL_ENTITY matrix_mult_struct
+set_global_assignment -name TOP_LEVEL_ENTITY key_loader
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "12:41:23  JANUARY 07, 2016"
 set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"

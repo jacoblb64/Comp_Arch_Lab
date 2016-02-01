@@ -1,0 +1,10 @@
+# database files for quartus
+db/
+incremental_db/
+
+# simulation temp files
+output_files/
+simulation/
+
+# Quartus backup files
+*.bak
