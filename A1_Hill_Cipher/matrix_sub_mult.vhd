@@ -1,3 +1,11 @@
+-- Author			: Jacob Barnett
+-- Creation Date	: 08/1/2015
+-- Last Revision	: 24/1/2015
+
+-- Matrix Multiplier Sub-Operation
+-- This is a supporting module for use in the Matrix Multiplier (Structural
+-- Implementation). This operation encapsulates one calculation of the output.
+
 library ieee;
 use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
@@ -17,12 +25,13 @@ end matrix_sub_mult;
 
 architecture struct of matrix_sub_mult is
 
+	-- intermediary signals connecting the various components
 	signal cxr, addr, mult1r,
 			 mult2r, mult3r		: std_logic_vector(7 downto 0);
 
 begin
 
-
+	-- three multiplications
 	lpm_mult_1 : lpm_mult
 		GENERIC MAP (
 			lpm_widtha => 4,
@@ -62,7 +71,8 @@ begin
 			result => mult3r
 			);
 			
-
+	-- two additions to add the three parts together
+	-- follows transitivity: (a + b) + c = a + b + c
 	lpm_add_1 : lpm_add_sub
 		GENERIC MAP (
 			lpm_width => 8,
@@ -89,7 +99,8 @@ begin
 			result => cxr
 			);
 			
-		cx <= cxr(3 downto 0);
+	-- truncate and write to output
+	cx <= cxr(3 downto 0);
 		
 
 end struct;

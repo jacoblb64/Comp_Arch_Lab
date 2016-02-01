@@ -1,3 +1,16 @@
+-- Author			: Jacob Barnett
+-- Creation Date	: 11/2/2015
+-- Last Revision	: 24/1/2015
+
+-- Key Loader (Structural Implementation)
+-- This is identical in functionality to the behavioral implementation of the
+-- key loader. Instead of a behavioral description, the operations are
+-- implemented using lpm components.
+
+-- In addition, this version of the key loader loads in a cascading fashion,
+-- meaning that the first column is loaded first, and the values shift over
+-- accordingly.
+
 library ieee;
 use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
@@ -21,12 +34,14 @@ end key_loader_struct;
 
 architecture struct of key_loader_struct is
 
+	-- k registers, to be used when shifting in values
 	signal	k11r, k12r, k13r,
 				k21r, k22r, k23r,
 				k31r, k32r, k33r	: std_logic_vector(3 downto 0);
 
 begin
 
+	-- column 3
 	lpm_ff_k13 : lpm_ff
 		GENERIC MAP (
 			lpm_width => 4,
@@ -63,7 +78,7 @@ begin
 			q => k33r
 			);
 
-
+	-- column 2
 	lpm_ff_k12 : lpm_ff
 		GENERIC MAP (
 			lpm_width => 4,
@@ -100,7 +115,7 @@ begin
 			q => k32r
 			);
 
-
+	-- column 1
 	lpm_ff_k11 : lpm_ff
 		GENERIC MAP (
 			lpm_width => 4,
@@ -137,6 +152,7 @@ begin
 			q => k31r
 			);
 			
+	-- connecting registers to output lines
 	k11 <= k11r;
 	k12 <= k12r;
 	k13 <= k13r;
