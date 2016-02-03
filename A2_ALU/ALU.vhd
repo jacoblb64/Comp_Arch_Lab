@@ -4,6 +4,7 @@
 -- Last Revision	: 
 
 -- ALU (Arithmetic Logic Unit)
+-- Performs  all basic arithmetic and logical operations.
 
 -- Op code table:
 	-- Arithmetic Operations

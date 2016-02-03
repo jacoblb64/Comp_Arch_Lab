@@ -1,0 +1,63 @@
+source alu_tb.tcl
+# 
+# 	ECSE 487 - Assignment #2
+# 	ALU Testbench
+# 	Author : Jacob Barnett
+# 
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 15:46:46 on Feb 03,2016
+# vcom -reportprogress 300 -work work ALU.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ALU
+# -- Compiling architecture arch of ALU
+# End time: 15:46:47 on Feb 03,2016, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# Model Technology ModelSim ALTERA vcom 10.3d Compiler 2014.10 Oct  7 2014
+# Start time: 15:46:47 on Feb 03,2016
+# vcom -reportprogress 300 -work work ALU_tb.vhd 
+# -- Loading package STANDARD
+# -- Loading package TEXTIO
+# -- Loading package std_logic_1164
+# -- Loading package NUMERIC_STD
+# -- Compiling entity ALU_tb
+# -- Compiling architecture arch of ALU_tb
+# End time: 15:46:47 on Feb 03,2016, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# vsim 
+# Start time: 15:46:48 on Feb 03,2016
+# Loading std.standard
+# Loading std.textio(body)
+# Loading ieee.std_logic_1164(body)
+# Loading ieee.numeric_std(body)
+# Loading work.alu_tb(arch)
+# Loading work.alu(arch)
+# WARNING: No extended dataflow license exists
+# ** Note: reset high
+#    Time: 0 ps  Iteration: 0  Instance: /alu_tb
+# ** Warning: NUMERIC_STD."=": metavalue detected, returning FALSE
+#    Time: 10 ns  Iteration: 0  Instance: /alu_tb
+# ** Error: error resetting
+#    Time: 10 ns  Iteration: 0  Instance: /alu_tb
+# ** Note: reset low
+#    Time: 10 ns  Iteration: 0  Instance: /alu_tb
+# ** Note: test add 1 + 1 = 2
+#    Time: 30 ns  Iteration: 0  Instance: /alu_tb
+# ** Note: test add 16 + 1 = 17
+#    Time: 70 ns  Iteration: 0  Instance: /alu_tb
+# ** Note: test add large
+#    Time: 110 ns  Iteration: 0  Instance: /alu_tb
+# ** Note: test and 5 & A = 1
+#    Time: 150 ns  Iteration: 0  Instance: /alu_tb
+# ** Note: test add x & 1 = x
+#    Time: 190 ns  Iteration: 0  Instance: /alu_tb
+# ** Note: test add x & 0 = 0
+#    Time: 230 ns  Iteration: 0  Instance: /alu_tb
+# ** Note: test and 5 << 2 = 14
+#    Time: 270 ns  Iteration: 0  Instance: /alu_tb
+# ** Note: test add 23 << 4 = 230
+#    Time: 310 ns  Iteration: 0  Instance: /alu_tb
+# ** Note: test add x & 16 = 0
+#    Time: 350 ns  Iteration: 0  Instance: /alu_tb
