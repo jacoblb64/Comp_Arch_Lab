@@ -6,5 +6,8 @@ incremental_db/
 output_files/
 simulation/
 
+# modelsim temp files
+work/
+
 # Quartus backup files
 *.bak
