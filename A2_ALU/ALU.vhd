@@ -12,19 +12,27 @@
 	-- subtraction					|	0001
 	
 	-- Boolean Operations
-	-- not							|	0010
-	-- and 							|	0011
-	-- nand 							|	0100
-	-- or								|	0101
-	-- nor							|	0110
-	-- xor							|	0111
-	-- xnor							|	1000
+	-- not							|	1000
+	-- and 							|	1001
+	-- nand 							|	1010
+	-- or								|	1011
+	-- nor							|	1100
+	-- xor							|	1101
+	-- xnor							|	1110
 	
 	-- Shifting Operations
-	-- arithmetic shift left	|	1001
-	-- arithmeticshift right	|	1010
-	-- logical shift left		|	1011
-	-- logical shift right		|	1100
+	-- arithmetic shift left	|	0100
+	-- arithmeticshift right	|	0101
+	-- logical shift left		|	0110
+	-- logical shift right		|	0111
+
+-- Status code bits (in order from MSB to LSB):
+-- CZNOP
+	-- Carry-out
+	-- Zero
+	-- Negative
+	-- Overflow
+	-- Parity
 
 ----------------------------------------------------------------------
 
@@ -53,7 +61,7 @@ entity ALU is
 		data_out			:	out signed(data_width-1 downto 0);
 
 		-- status information from last operation
-		status			:	out unsigned(3 downto 0)
+		status			:	out unsigned(4 downto 0)
 	) ;
 end entity ; -- ALU
 
@@ -66,29 +74,32 @@ architecture arch of ALU is
 	constant SUB_OP	:	unsigned(3 downto 0) := "0001";
 
 	-- Boolean Operations
-	constant NOT_OP	:	unsigned(3 downto 0) := "0010";
-	constant AND_OP	:	unsigned(3 downto 0) := "0011";
-	constant NAND_OP	:	unsigned(3 downto 0) := "0100";
-	constant OR_OP		:	unsigned(3 downto 0) := "0101";
-	constant NOR_OP	:	unsigned(3 downto 0) := "0110";
-	constant XOR_OP	:	unsigned(3 downto 0) := "0111";
-	constant XNOR_OP	:	unsigned(3 downto 0) := "1000";
+	constant NOT_OP	:	unsigned(3 downto 0) := "1000";
+	constant AND_OP	:	unsigned(3 downto 0) := "1001";
+	constant NAND_OP	:	unsigned(3 downto 0) := "1010";
+	constant OR_OP		:	unsigned(3 downto 0) := "1011";
+	constant NOR_OP	:	unsigned(3 downto 0) := "1100";
+	constant XOR_OP	:	unsigned(3 downto 0) := "1101";
+	constant XNOR_OP	:	unsigned(3 downto 0) := "1110";
 
 	-- Shifting Operations
-	constant SLA_OP	:	unsigned(3 downto 0) := "1001";
-	constant SRA_OP	:	unsigned(3 downto 0) := "1010";
-	constant SLL_OP	:	unsigned(3 downto 0) := "1011";
-	constant SRL_OP	:	unsigned(3 downto 0) := "1100";
+	constant SLA_OP	:	unsigned(3 downto 0) := "0100";
+	constant SRA_OP	:	unsigned(3 downto 0) := "0101";
+	constant SLL_OP	:	unsigned(3 downto 0) := "0110";
+	constant SRL_OP	:	unsigned(3 downto 0) := "0111";
 
 
 -- Internal signals for latching
-	signal opcode_r,
-			 status_r	:	unsigned(3 downto 0);
+	signal opcode_r	:	unsigned(3 downto 0);
+
+	signal status_r 	:	unsigned(4 downto 0);
 
 	signal input_a,
 			 input_b,
-			 result		: signed(data_width-1 downto 0);
-
+			 result		: signed(data_width downto 0);
+			 
+	signal temp			: unsigned(data_width downto 0);
+	
 begin
 
 -- Latching Values
@@ -98,10 +109,10 @@ begin
 		if (rising_edge(clock)) then
 
 			opcode_r	 <= opcode;
-			input_a	 <= data0;
-			input_b	 <= data1;
+			input_a	 <= resize(data0, data_width+1);
+			input_b	 <= resize(data1, data_width+1);
 
-			data_out	 <= result;
+			data_out	 <= resize(result, data_width);
 			status	 <= status_r;
 
 		end if ;
@@ -114,12 +125,10 @@ begin
 	begin
 		if (reset = '1') then
 
-			result <= to_signed(0, data_width);
-			status_r <= to_unsigned(0, 4);
+			result <= to_signed(0, data_width+1);
+			status_r <= to_unsigned(0, 5);
 
 		elsif (rising_edge(clock)) then
-			-- Output the opcode onto the status register
-			status_r <= opcode_r;
 
 			case( opcode_r ) is
 			-- Arithmetic Operations
@@ -178,13 +187,45 @@ begin
 
 			-- Undefined Operation
 				when others =>
-					result <= to_signed(0, data_width);
-					status_r <= to_unsigned(0, 4);
+					result <= to_signed(0, data_width+1);
+					status_r <= to_unsigned(0, 5);
 
 			end case ;
+
+		-- Assigning status bits based on operation category
+			if (opcode_r(3) = '0') then -- arithmetic or boolean
+				if (opcode_r(2) = '0') then -- arithmetic
+
+					--if (opcode_r then
+						
+					--end if ;
+					
+				
+				else -- shifting
+
+					status_r(4) <= result(data_width);
+				end if ;
+
+			else -- boolean
+
+			end if ;
+
+			-- if all the bits are zero, set the zero flag
+			if (to_integer(result) = 0) then
+				status_r(3) <= '1';
+			end if ;
+
 
 		end if ;
 		
 	end process ; -- operation
+
+
+		-- determine parity
+		temp(0) <= result(0);
+		gen : for i in 1 to data_width generate
+			temp(i) <= temp(i-1) XOR result(0);
+		end generate ; -- parity
+		status_r(0) <= temp(data_width);
 
 end architecture ; -- arch

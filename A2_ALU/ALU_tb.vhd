@@ -39,7 +39,7 @@ architecture arch of ALU_tb is
 			data_out			:	out signed(data_width-1 downto 0);
 
 			-- status information from last operation
-			status			:	out unsigned(3 downto 0)
+			status			:	out unsigned(4 downto 0)
 		) ;
 	end component ; -- ALU
 
@@ -51,8 +51,9 @@ architecture arch of ALU_tb is
 				data1,
 				data_out		: signed(15 downto 0);
 
-	signal 	opcode,
-				status		: unsigned(3 downto 0);
+	signal 	opcode		: unsigned(3 downto 0);
+
+	signal	status		: unsigned(4 downto 0);
 
 	constant clk_period	: time := 10 ns;
 
@@ -120,13 +121,16 @@ begin
 			report "error adding"
 			severity ERROR;
 
-		report "test add large";
-		data0 <= x"0765";
-		data1 <= x"0234";
+		report "test add large with overflow";
+		data0 <= x"7F65";
+		data1 <= x"7F34";
 		opcode <= "0000";
 		wait for 4*clk_period;		
-		assert (data_out = x"0999")
+		assert (data_out = x"7E99")
 			report "error adding"
+			severity ERROR;
+		assert (status = "10000")
+			report "error overflow bit"
 			severity ERROR;
 
 	-- test and functionality

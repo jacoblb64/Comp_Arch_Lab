@@ -13,9 +13,9 @@ proc AddWaves {} \
 	add wave -position end sim:/alu_tb/reset	
 	add wave -radix signed -position end sim:/alu_tb/data0
 	add wave -radix signed -position end sim:/alu_tb/data1
-	add wave -radix unsigned -position end sim:/alu_tb/opcode
+	add wave -radix binary -position end sim:/alu_tb/opcode
 	add wave -radix signed -position end sim:/alu_tb/data_out
-	add wave -radix unsigned -position end sim:/alu_tb/status
+	add wave -radix binary -position end sim:/alu_tb/status
 
 }
 
