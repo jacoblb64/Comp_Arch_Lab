@@ -17,13 +17,18 @@ use ieee.std_logic_arith.all;
 use ieee.std_logic_unsigned.all;
 
 entity matrix_mult is
-	port(		p1, p2, p3,
+	port(		-- input vector (1x3)
+				p1, p2, p3,
+
+				-- key to multiply by (3x3)
 				k11, k12, k13,
 				k21, k22, k23,
 				k31, k32, k33		: in 	std_logic_vector(3 downto 0);
 
+				-- system clock
 				clk					: in std_logic;
 
+				-- output vector
 				c1, c2, c3			: out std_logic_vector(3 downto 0)
 	);
 	

@@ -11,6 +11,8 @@
 -- meaning that the first column is loaded first, and the values shift over
 -- accordingly.
 
+-- No modifications to the initial specification were made.
+
 library ieee;
 use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
@@ -21,10 +23,16 @@ library lpm;
 use lpm.lpm_components.all;
 
 entity key_loader_struct is
-	port(		p1, p2, p3		: in 	std_logic_vector(3 downto 0);
+	port(		-- input vector
+				p1, p2, p3		: in 	std_logic_vector(3 downto 0);
 	
-				load_key, clk	: in 	std_logic;
+				-- signal to begin key loading process
+				load_key,
+
+				-- system clock
+				clk				: in 	std_logic;
 				
+				-- key loaded into the system
 				k11, k12, k13,
 				k21, k22, k23,
 				k31, k32, k33	: out std_logic_vector(3 downto 0)

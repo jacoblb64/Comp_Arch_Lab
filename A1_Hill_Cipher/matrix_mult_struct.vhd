@@ -7,6 +7,8 @@
 -- matrix multiplier. Instead of a behavioral description, the operations are
 -- implemented using lpm components.
 
+-- No modifications to the initial specification were made.
+
 library ieee;
 use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
@@ -17,14 +19,19 @@ use lpm.lpm_components.all;
 
 entity matrix_mult_struct is
 
-	port(		p1, p2, p3,
+	port(		-- input vector (1x3)
+				p1, p2, p3,
+
+				-- key to multiply by (3x3)
 				k11, k12, k13,
 				k21, k22, k23,
-				k31, k32, k33			: in 	std_logic_vector(3 downto 0);
+				k31, k32, k33		: in 	std_logic_vector(3 downto 0);
 
-				clk						: in std_logic;
+				-- system clock
+				clk					: in std_logic;
 
-				c1, c2, c3				: out std_logic_vector(3 downto 0)
+				-- output vector
+				c1, c2, c3			: out std_logic_vector(3 downto 0)
 	);
 	
 end matrix_mult_struct;

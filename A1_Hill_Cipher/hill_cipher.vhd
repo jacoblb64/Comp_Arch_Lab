@@ -6,6 +6,8 @@
 -- This is the overall architecture that brings all of the supporting modules
 -- together to perform the complete operation of encryption and decryption.
 
+-- No modifications to the initial specification were made.
+
 library ieee;
 use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
@@ -15,11 +17,19 @@ library lpm;
 use lpm.lpm_components.all;
 
 entity hill_cipher is
-  port (	p1, p2, p3		: in	std_logic_vector(3 downto 0);
+  port ( -- input vector to the system
+  			p1, p2, p3		: in	std_logic_vector(3 downto 0);
   			
-  			clk, load_key,
+  			-- system clock
+  			clk,
+
+  			-- signal to begin key loading process
+  			load_key,
+
+  			-- encryption or decryption select signal
   			encrypt			: in	std_logic;
 
+  			-- output vector
   			c1, c2, c3		: out	std_logic_vector(3 downto 0)
   ) ;
 end entity ; -- hill_cipher

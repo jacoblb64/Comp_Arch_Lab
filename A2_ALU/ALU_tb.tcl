@@ -2,13 +2,13 @@ puts {
 	ECSE 487 - Assignment #2
 	ALU Testbench
 	Author : Jacob Barnett
-	Creation Date : 02/02/2015
-	Last Revision : 
+	Creation Date : 02/02/2016
+	Last Revision : 05/02/2016
 }
 
 proc AddWaves {} \
 {
-	# all relevant signals and appropriate radix's
+	# all relevant signals with appropriate radix's
 	add wave -position end sim:/alu_tb/clock
 	add wave -position end sim:/alu_tb/reset	
 	add wave -radix signed -position end sim:/alu_tb/data0

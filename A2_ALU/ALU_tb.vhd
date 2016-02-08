@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
 -- Author			: Jacob Barnett
--- Creation Date	: 01/02/2015
--- Last Revision	: 
+-- Creation Date	: 01/02/2016
+-- Last Revision	: 07/02/2016
 
 -- ALU Testbench
 -- Used for testing the proper operation of the ALU
@@ -121,6 +121,19 @@ begin
 			report "error adding"
 			severity ERROR;
 
+		report "test add large";
+		data0 <= x"0765";
+		data1 <= x"0234";
+		opcode <= "0000";
+		wait for 4*clk_period;		
+		assert (data_out = x"0999")
+			report "error adding"
+			severity ERROR;
+		assert (status = "10000")
+			report "error overflow bit"
+			severity ERROR;
+
+		-- extra test added in later to test overflow
 		report "test add large with overflow";
 		data0 <= x"7F65";
 		data1 <= x"7F34";
@@ -143,7 +156,7 @@ begin
 			report "error anding"
 			severity ERROR;
 
-		report "test add x & 1 = x";
+		report "test and x & 1 = x";
 		data0 <= x"57CD";
 		data1 <= x"FFFF";
 		opcode <= "0011";
@@ -152,7 +165,7 @@ begin
 			report "error anding"
 			severity ERROR;
 
-		report "test add x & 0 = 0";
+		report "test and x & 0 = 0";
 		data0 <= x"0765";
 		data1 <= x"0000";
 		opcode <= "0011";
@@ -162,7 +175,7 @@ begin
 			severity ERROR;
 
 	-- test shift left logical functionality
-		report "test and 5 << 2 = 14";
+		report "test 0x5 << 2 = 0x14";
 		data0 <= x"0005";
 		data1 <= x"0002";
 		opcode <= "1011";
@@ -171,7 +184,7 @@ begin
 			report "error shifting left logical"
 			severity ERROR;
 
-		report "test add 23 << 4 = 230";
+		report "test 0x23 << 4 = 0x230";
 		data0 <= x"0023";
 		data1 <= x"0004";
 		opcode <= "1011";
@@ -180,7 +193,7 @@ begin
 			report "error shifting left logical"
 			severity ERROR;
 
-		report "test add x & 16 = 0";
+		report "test x & 16 = 0";
 		data0 <= x"0765";
 		data1 <= x"0010";
 		opcode <= "1011";

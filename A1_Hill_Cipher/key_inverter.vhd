@@ -9,6 +9,8 @@
 -- As this operation is the slowest in the system, an attempt was made to
 -- pipeline the steps of operation.
 
+-- No modifications to the initial specification were made.
+
 library ieee;
 use ieee.std_logic_1164.all; -- allows use of the std_logic_vector type
 use ieee.std_logic_arith.all;
@@ -19,12 +21,15 @@ library lpm;
 use lpm.lpm_components.all;
 
 entity key_inverter is
-	port(		ek11, ek12, ek13,
+	port(		-- encryption key
+				ek11, ek12, ek13,
 				ek21, ek22, ek23,
 				ek31, ek32, ek33		:	in		std_logic_vector(3 downto 0);
 
+				-- system clock
 				clk						:	in 	std_logic;
 
+				-- decryption key to be output
 				dk11, dk12, dk13,
 				dk21, dk22, dk23,
 				dk31, dk32, dk33		:	out	std_logic_vector(3 downto 0)

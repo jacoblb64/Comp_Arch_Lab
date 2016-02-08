@@ -15,9 +15,13 @@ library lpm;
 use lpm.lpm_components.all;
 
 entity matrix_sub_mult is
-	port(		p1, p2, p3,
+	port(		-- input vector
+				p1, p2, p3,
+
+				-- column of the key to multiply by
 				k1x, k2x, k3x		: in 	std_logic_vector(3 downto 0);
 
+				-- output value
 				cx						: out std_logic_vector(3 downto 0)
 	);
 	

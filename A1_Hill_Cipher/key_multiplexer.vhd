@@ -24,7 +24,11 @@ entity key_multiplexer is
 				dk21, dk22, dk23,
 				dk31, dk32, dk33		: in	std_logic_vector(3 downto 0);
 
-				encrypt, clk			: in	std_logic;
+				-- encryption or decryption select line
+				encrypt,
+
+				-- system clock
+				clk						: in	std_logic;
 
 				-- output key
 				ok11, ok12, ok13,

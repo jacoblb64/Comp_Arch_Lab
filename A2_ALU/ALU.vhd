@@ -1,7 +1,7 @@
 ----------------------------------------------------------------------
 -- Author			: Jacob Barnett
--- Creation Date	: 30/01/2015
--- Last Revision	: 
+-- Creation Date	: 30/01/2016
+-- Last Revision	: 07/02/2016
 
 -- ALU (Arithmetic Logic Unit)
 -- Performs  all basic arithmetic and logical operations.
@@ -103,6 +103,8 @@ architecture arch of ALU is
 begin
 
 -- Latching Values
+	-- resizing values where appropriate keeps sign intact
+	-- internal signals are kept one bit larger to keep track of carry-out / overflow
 
 	latch : process( clock )
 	begin
@@ -193,20 +195,23 @@ begin
 			end case ;
 
 		-- Assigning status bits based on operation category
-			if (opcode_r(3) = '0') then -- arithmetic or boolean
-				if (opcode_r(2) = '0') then -- arithmetic
-
-					--if (opcode_r then
-						
-					--end if ;
+			if (opcode_r(3) = '0') then -- arithmetic or shifting
 					
-				
-				else -- shifting
+					if (opcode(2) = '0') then -- arithmetic
 
-					status_r(4) <= result(data_width);
-				end if ;
+						-- considered overflow in signed arithmetic
+						status_r(1) <= result(data_width);
+
+					else -- shifting
+
+						-- considered carry-out for shifting
+						status_r(4) <= result(data_width);
+
+					end if ;
 
 			else -- boolean
+
+				-- no carry-out or overflow for boolean operations
 
 			end if ;
 
@@ -215,17 +220,18 @@ begin
 				status_r(3) <= '1';
 			end if ;
 
+			-- if the first bit (after resizing appropriately) is 1, then set the negative flag
+			temp <= resize(result, data_width);
+			if (temp(data_width-1) = '1') then
+				status_r(2) <= '1';
+			end if ;
+
+			-- determine parity by xor'ing all bits (compiles in modelsim)
+			status_r(0) <= NOT XOR result;
 
 		end if ;
 		
 	end process ; -- operation
 
-
-		-- determine parity
-		temp(0) <= result(0);
-		gen : for i in 1 to data_width generate
-			temp(i) <= temp(i-1) XOR result(0);
-		end generate ; -- parity
-		status_r(0) <= temp(data_width);
 
 end architecture ; -- arch
